@@ -14,21 +14,25 @@ for REPO in $REPOS; do
     fi
 
     # Construct the raw file URL
-    REPO_URL="https://raw.githubusercontent.com/$ORG/$REPO/main/extraMethodsStatements.txt"
-    
+    REPO_URL="https://raw.githubusercontent.com/$ORG/$REPO/main/extraMethodsStatements.json"
+   
     # Local path
     FILE_PATH="$SRC_DIR/$REPO/extraMethodsStatements.txt"
+    FILE_PATH_JSON="$SRC_DIR/$REPO/extraMethodsStatements.json"
     mkdir -p "$SRC_DIR/$REPO"
+    wget -q -O "$FILE_PATH_JSON" "$REPO_URL"
+		
+	jq -r '.listObject[] | "\(.object) \(.type)"' "$FILE_PATH_JSON" > "$FILE_PATH"
+		
 
     # Download quietly
-    wget -q -O "$FILE_PATH" "$REPO_URL"
 
     if [ -s "$FILE_PATH" ]; then
         # Split the repo name at the first "-"
         OBJ_NAME="${REPO%%-*}"      # before "-"
         OBJ_TYPE="${REPO#*-}"       # after "-"
         
-        echo "For repository '$REPO' ($OBJ_NAME,$OBJ_TYPE), Found a extraMethodsStatements.txt:"
+        echo "For repository '$REPO' ($OBJ_NAME,$OBJ_TYPE), Found a extraMethodsStatements.json:"
         
         # Read the file line by line
         while IFS=' ' read -r OBJECT_STATEMENTS TYPE_STATEMENT || [[ -n "$OBJECT_STATEMENTS" ]]; do
