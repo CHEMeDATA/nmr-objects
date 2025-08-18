@@ -2,31 +2,91 @@
 
 # Define source paths
 SRC_DIR="src"
-DIST_DIR="dist"
 
-# Ensures dist exists
+DIST_DIR="dist"
+rm -r "$DIST_DIR"
 mkdir -p "$DIST_DIR"
 
-# Here will loop OBJ over different import
-OBJ="MnovaJson-reader"
-OBJ_DIR="/Users/djeanner/git/$OBJ/src"
+# Here will loop OBJ over different reader, writer, viewer
+SRATCH_DIR="scratch"
 
-mkdir -p "$SRC_DIR/$OBJ"
+# Define types and their corresponding files
+for TYPE in import export viewer; do
+    FILE_IN_SCRATCH="$SRATCH_DIR/$TYPE.txt"
+    
+    # Skip if file does not exist or is empty
+    [[ ! -s "$FILE_IN_SCRATCH" ]] && continue
+    
+    echo "** Processing $TYPE objects from $FILE_IN_SCRATCH **"
+    
+    while IFS= read -r OBJ || [[ -n "$OBJ" ]]; do
+        [[ -z "$OBJ" ]] && continue
+        [[ "$OBJ" == '//'** || "$OBJ" == \#* ]] && continue
+        
+        echo "Processing $TYPE object: $OBJ"
+        
 
-# Copy input files into src
-cp "$OBJ_DIR/importStatements.js" "$SRC_DIR/$OBJ"
-cp "$OBJ_DIR/importMethod.js" "$SRC_DIR/$OBJ"
+		# OBJ_GIT_POINTER="https://chemedata.github.io/$OBJ/extraMethodsStatements.txt"
+		OBJ_GIT_POINTER="https://raw.githubusercontent.com/CHEMeDATA/$OBJ/main"
+		OBJ_File="$SRC_DIR/$OBJ"
+		mkdir -p "$SRC_DIR/$OBJ"
+		wget -q -O "$OBJ_File/extraMethodsStatements.txt" "$OBJ_GIT_POINTER/extraMethodsStatements.txt"
+		if [ -s "$OBJ_File/extraMethodsStatements.txt" ]; then
+			while IFS=' ' read -r OBJECT_STATEMENTS TYPE_STATEMENT 
+			do
+			  	# Skip empty line
+				[[ -z "$OBJECT_STATEMENTS" ]] && continue
+		  		# Skip comment lines starting with // or #
+				[[ "$OBJECT_STATEMENTS" == '//'** ]] && continue
 
-# Build dist/nmrSpectrumObject.js
-echo "create $DIST_DIR/nmrSpectrumObject.js"
-cat "$SRC_DIR/nmrSpectrumObject.js" \
-  | sed '/\/\/ AUTOMATIC IMPORT INSERTION WILL BE MADE HERE/r '"$SRC_DIR/$OBJ/importStatements.js" \
-  | sed '/\/\/ AUTOMATIC METHOD INSERTION WILL BE MADE HERE/r '"$SRC_DIR/$OBJ/importMethod.js" \
-  > "$DIST_DIR/nmrSpectrumObject.js"
+			  	echo "testing on Object =$OBJECT_STATEMENTS, Type =$TYPE_STATEMENT"
 
-# Build dist/jGraphObject.js
-echo "create $DIST_DIR/jGraphObject.js"
-cat "$SRC_DIR/jGraphObject.js" \
-  | sed '/\/\/ AUTOMATIC IMPORT INSERTION WILL BE MADE HERE/r '"$SRC_DIR/$OBJ/importStatements.js" \
-  | sed '/\/\/ AUTOMATIC METHOD INSERTION WILL BE MADE HERE/r '"$SRC_DIR/$OBJ/importMethod.js" \
-  > "$DIST_DIR/jGraphObject.js"
+			  # Skip comment lines (// at the start)
+
+				# continue if not one of the three types
+				[[ "$TYPE_STATEMENT" != "import" && "$TYPE_STATEMENT" != "export" && "$TYPE_STATEMENT" != "viewer" ]] && continue
+
+				wget -q -O "$OBJ_File/importStatements.js" "$OBJ_GIT_POINTER/src/importStatements.js"
+				wget -q -O "$OBJ_File/importMethod.js" "$OBJ_GIT_POINTER/src/importMethod.js"
+
+				if [ ! -s "$OBJ_File/importStatements.js" ]; then
+				  echo "ERROR : File $OBJ_File/importStatements.js missing or empty"
+				  continue;
+				fi
+				if [ ! -s "$OBJ_File/importMethod.js" ]; then
+				  echo "ERROR : File $OBJ_File/importMethod.js missing or empty"
+				  continue;
+				fi
+
+				if [ ! -s "$SRC_DIR/$OBJECT_STATEMENTS.js" ]; then
+				  echo "ERROR : File $SRC_DIR/$OBJECT_STATEMENTS.txt missing or empty : the target class does not exists"
+				  continue;
+				fi
+
+				if [ ! -s "$DIST_DIR/$OBJECT_STATEMENTS.js" ]; then
+				  cp "$SRC_DIR/$OBJECT_STATEMENTS.js" "$DIST_DIR/$OBJECT_STATEMENTS.js"
+				fi
+				
+
+				# Build dist/nmrSpectrumObject.js
+				echo "Insertions in $DIST_DIR/$OBJECT_STATEMENTS.js"
+				cat "$DIST_DIR/$OBJECT_STATEMENTS.js" \
+				  | sed '/\/\/ AUTOMATIC IMPORT INSERTION WILL BE MADE HERE/r '"$SRC_DIR/$OBJ/importStatements.js" \
+				  | sed '/\/\/ AUTOMATIC METHOD INSERTION WILL BE MADE HERE/r '"$SRC_DIR/$OBJ/importMethod.js" \
+				  > "$DIST_DIR/tmp.js"
+				mv "$DIST_DIR/tmp.js" "$DIST_DIR/$OBJECT_STATEMENTS.js"
+
+			done < "$OBJ_File/extraMethodsStatements.txt"
+
+		else
+		  echo "❌ Download of file $OBJ_GIT_POINTER failed (or file is empty) for object : $OBJ"
+		fi
+
+	done < "$FILE_IN_SCRATCH"
+done
+
+# Here will loop over the the content of the manifest file of the reader/writer/viewer to see if any object needs to be complemented ...
+
+
+
+
