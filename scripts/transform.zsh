@@ -25,12 +25,33 @@ for TYPE in import export viewer; do
         
         echo "Processing $TYPE object: $OBJ"
         
-
 		# OBJ_GIT_POINTER="https://chemedata.github.io/$OBJ/extraMethodsStatements.txt"
 		OBJ_GIT_POINTER="https://raw.githubusercontent.com/CHEMeDATA/$OBJ/main"
 		OBJ_File="$SRC_DIR/$OBJ"
 		mkdir -p "$SRC_DIR/$OBJ"
-		wget -q -O "$OBJ_File/extraMethodsStatements.txt" "$OBJ_GIT_POINTER/extraMethodsStatements.txt"
+		wget -q -O "$OBJ_File/extraMethodsStatements.json" "$OBJ_GIT_POINTER/extraMethodsStatements.json"
+		if [ ! -s "$OBJ_File/extraMethodsStatements.json" ]; then
+		    continue
+		fi
+		jq -r '.listObject[] | "\(.object) \(.type)"' "$OBJ_File/extraMethodsStatements.json" > "$OBJ_File/extraMethodsStatements.txt"
+		
+		jq -r '.jsLibrary[]' "$OBJ_File/extraMethodsStatements.json" | while IFS= read -r lib; do
+		echo "Processing library: $lib"
+		if [[ ! -f "$DIST_DIR/$lib" ]]; then
+			wget -q -O "$DIST_DIR/$lib" "$OBJ_GIT_POINTER/src/$lib"
+		else
+			echo "$lib already exists in $DIST_DIR, skipping."
+		fi
+
+		# add comment in library
+		editor=$(jq -r '.creatorParam.editor' "$OBJ_File/extraMethodsStatements.json")
+		version=$(jq -r '.creatorParam.version' "$OBJ_File/extraMethodsStatements.json")
+		source=$(jq -r '.creatorParam.source' "$OBJ_File/extraMethodsStatements.json")
+		id=$(jq -r '.creatorParam.id' "$OBJ_File/extraMethodsStatements.json")
+		result="Editor${editor}_Version${version}_Source${source}_ID${id}"
+		echo "// for $result" >> "$DIST_DIR/$lib"
+
+		done
 		if [ -s "$OBJ_File/extraMethodsStatements.txt" ]; then
 			while IFS=' ' read -r OBJECT_STATEMENTS TYPE_STATEMENT 
 			do
@@ -84,9 +105,3 @@ for TYPE in import export viewer; do
 
 	done < "$FILE_IN_SCRATCH"
 done
-
-# Here will loop over the the content of the manifest file of the reader/writer/viewer to see if any object needs to be complemented ...
-
-
-
-
