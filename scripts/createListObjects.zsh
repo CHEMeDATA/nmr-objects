@@ -14,11 +14,12 @@ for REPO in $REPOS; do
     fi
 
     # Construct the raw file URL
-    REPO_URL="https://raw.githubusercontent.com/$ORG/$REPO/main/extraMethodsStatements.json"
+    BODYStatement="extraMethodsStatements"
+    REPO_URL="https://raw.githubusercontent.com/$ORG/$REPO/main/$BODYStatement.json"
    
     # Local path
-    FILE_PATH="$SRC_DIR/$REPO/extraMethodsStatements.txt"
-    FILE_PATH_JSON="$SRC_DIR/$REPO/extraMethodsStatements.json"
+    FILE_PATH="$SRC_DIR/$REPO/$BODYStatement.txt"
+    FILE_PATH_JSON="$SRC_DIR/$REPO/$BODYStatement.json"
     mkdir -p "$SRC_DIR/$REPO"
     wget -q -O "$FILE_PATH_JSON" "$REPO_URL"
 		
@@ -32,7 +33,7 @@ for REPO in $REPOS; do
         OBJ_NAME="${REPO%%-*}"      # before "-"
         OBJ_TYPE="${REPO#*-}"       # after "-"
         
-        echo "For repository '$REPO' ($OBJ_NAME,$OBJ_TYPE), Found a extraMethodsStatements.json:"
+        echo "For repository '$REPO' ($OBJ_NAME,$OBJ_TYPE), Found a $BODYStatement.json:"
         
         # Read the file line by line
         while IFS=' ' read -r OBJECT_STATEMENTS TYPE_STATEMENT || [[ -n "$OBJECT_STATEMENTS" ]]; do
@@ -54,7 +55,7 @@ for REPO in $REPOS; do
         done < "$FILE_PATH"
     else
         rm -r "$SRC_DIR/$REPO"
-        echo "Skip $REPO : No extraMethodsStatements.txt file"
+        echo "Skip $REPO : No $BODYStatement.txt file"
     fi
 done
 
