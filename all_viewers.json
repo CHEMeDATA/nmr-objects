@@ -37,6 +37,7 @@
      "jsLibrary": [
        "mnovaJsonReader.js"
      ],
+     "repository": "MnovaJson-reader",
      "creatorParam": {
        "editor": "djeanner",
        "version": "1",
