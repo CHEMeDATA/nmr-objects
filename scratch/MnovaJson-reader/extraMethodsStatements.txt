@@ -1,2 +1,2 @@
-NMRspectrumObject import
-JgraphObject import
+nmrSpectrumObject import
+jGraphObject import

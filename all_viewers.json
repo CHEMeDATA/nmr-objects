@@ -4,7 +4,8 @@
    {
      "listObject": [
        {
-         "object": "NMRspectrumObject",
+         "object": "nmrSpectrumObject",
+         "object2": "NMRspectrumObject",
          "type": "import",
          "requiredInput": [
            {
@@ -16,7 +17,8 @@
          ]
        },
        {
-         "object": "JgraphObject",
+         "object": "jGraphObject",
+         "object2": "JgraphObject",
          "type": "import",
          "requiredInput": [
            {
