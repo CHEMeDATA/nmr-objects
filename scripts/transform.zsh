@@ -10,6 +10,7 @@ mkdir -p "$DIST_DIR"
 # Here will loop OBJ over different reader, writer, viewer
 SCRATCH_DIR="scratch"
 BODYStatement="extraMethodsStatements"
+echo "Start scripts/transform.zsh"
 
 # Define types and their corresponding files
 for TYPE in import export viewer; do
@@ -106,3 +107,4 @@ for TYPE in import export viewer; do
 
 	done < "$FILE_IN_SCRATCH"
 done
+echo
