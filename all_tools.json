@@ -99,6 +99,11 @@
              "fileName": "src/viewerBase.js"
            },
            {
+             "repository": "CHEMeDATA/nmr-objects",
+             "fileName": "dist/jGraphObject.js",
+             "include": "JgraphObject"
+           },
+           {
              "repository": "CHEMeDATA/NMRspectrum-viewer",
              "fileName": "src/jGraphViewer.js",
              "include": "JgraphViewer"
@@ -110,11 +115,6 @@
            {
              "repository": "CHEMeDATA/NMRspectrum-viewer",
              "fileName": "src/nmrAssignement.js"
-           },
-           {
-             "repository": "CHEMeDATA/nmr-objects",
-             "fileName": "dist/jGraphObject.js",
-             "include": "JgraphObject"
            },
            {
              "repository": "CHEMeDATA/NMRspectrum-viewer",
