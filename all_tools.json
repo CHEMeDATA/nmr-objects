@@ -4,9 +4,8 @@
    {
      "listObject": [
        {
-         "object": "",
+         "object": "NmrSpectrum",
          "type": "viewer",
-         "class": "NmrSpectrum",
          "repository": "CHEMeDATA/NMRspectrum-viewer",
          "fileNameViewerUSELESSMAXBE_REDUNDANT": [
            "src/nmrSpectrum.js"
@@ -14,7 +13,8 @@
          "jsLibrary": [
            {
              "repository": "CHEMeDATA/NMRspectrum-viewer",
-             "fileName": "src/nmrSpectrum.js"
+             "fileName": "src/nmrSpectrum.js",
+             "include": "NmrSpectrum"
            },
            {
              "repository": "CHEMeDATA/schema",
@@ -27,9 +27,8 @@
          ]
        },
        {
-         "object": "",
+         "object": "NmrAssignment",
          "type": "viewer",
-         "class": "NmrAssignment",
          "repository": "CHEMeDATA/NMRspectrum-viewer",
          "fileNameViewerUSELESSMAXBE_REDUNDANT": [
            "src/nmrAssignement.js",
@@ -86,9 +85,8 @@
          "listObjectSchema": []
        },
        {
-         "object": "",
+         "object": "JgraphViewer",
          "type": "viewer",
-         "class": "JgraphViewer",
          "repository": "CHEMeDATA/NMRspectrum-viewer",
          "fileNameViewerUSELESSMAXBE_REDUNDANT": [
            "src/jGraphViewer.js",
@@ -102,7 +100,8 @@
            },
            {
              "repository": "CHEMeDATA/NMRspectrum-viewer",
-             "fileName": "src/jGraphViewer.js"
+             "fileName": "src/jGraphViewer.js",
+             "include": "JgraphViewer"
            },
            {
              "repository": "CHEMeDATA/NMRspectrum-viewer",
@@ -114,7 +113,8 @@
            },
            {
              "repository": "CHEMeDATA/nmr-objects",
-             "fileName": "dist/jGraphObject.js"
+             "fileName": "dist/jGraphObject.js",
+             "include": "JgraphObject"
            },
            {
              "repository": "CHEMeDATA/NMRspectrum-viewer",
