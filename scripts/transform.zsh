@@ -10,22 +10,23 @@ mkdir -p "$DIST_DIR"
 # Here will loop OBJ over different reader, writer, viewer
 SCRATCH_DIR="scratch"
 BODYStatement="extraMethodsStatements"
-echo "Start scripts/transform.zsh"
+echo ""
+echo "****** Start scripts/transform.zsh "
+
 
 # Define types and their corresponding files
 for TYPE in import export viewer; do
     FILE_IN_SCRATCH="$SCRATCH_DIR/$TYPE.txt"
-
+    echo "** Processing <$TYPE> objects from $FILE_IN_SCRATCH **"
     # Skip if file does not exist or is empty
     [[ ! -s "$FILE_IN_SCRATCH" ]] && continue
     
-    echo "** Processing $TYPE objects from $FILE_IN_SCRATCH **"
     
     while IFS= read -r OBJ || [[ -n "$OBJ" ]]; do
         [[ -z "$OBJ" ]] && continue
         [[ "$OBJ" == '//'** || "$OBJ" == \#* ]] && continue
         
-        echo "Processing $TYPE object: $OBJ"
+        echo "    Processing <$TYPE> object: $OBJ"
         
 		# OBJ_GIT_POINTER="https://chemedata.github.io/$OBJ/$BODYStatement.txt"
 		OBJ_GIT_POINTER="https://raw.githubusercontent.com/CHEMeDATA/$OBJ/main"
@@ -38,7 +39,7 @@ for TYPE in import export viewer; do
 		jq -r '.listObject[] | "\(.object) \(.type)"' "$OBJ_File/$BODYStatement.json" > "$OBJ_File/$BODYStatement.txt"
 		
 		jq -r '.jsLibrary[]' "$OBJ_File/$BODYStatement.json" | while IFS= read -r lib; do
-			echo "Processing library: $lib"
+			echo "         Processing library: $lib"
 			if [[ ! -f "$DIST_DIR/$lib" ]]; then
 				wget -q -O "$DIST_DIR/$lib" "$OBJ_GIT_POINTER/src/$lib"
 			else
@@ -62,7 +63,7 @@ for TYPE in import export viewer; do
 		  		# Skip comment lines starting with // or #
 				[[ "$OBJECT_STATEMENTS" == '//'** ]] && continue
 
-			  	echo "testing on Object =$OBJECT_STATEMENTS, Type =$TYPE_STATEMENT"
+			  	echo "                          Object : $OBJECT_STATEMENTS"
 
 			  # Skip comment lines (// at the start)
 
@@ -92,7 +93,12 @@ for TYPE in import export viewer; do
 				
 
 				# Build dist/nmrSpectrumObject.js
-				echo "Insertions in $DIST_DIR/$OBJECT_STATEMENTS.js"
+				echo ""
+				echo "             Insertions of $SRC_DIR/$OBJ/importStatements.js"
+				echo "                       and $SRC_DIR/$OBJ/importMethod.js"
+				echo "                        in $DIST_DIR/$OBJECT_STATEMENTS.js"
+				echo ""
+
 				cat "$DIST_DIR/$OBJECT_STATEMENTS.js" \
 				  | sed '/\/\/ AUTOMATIC IMPORT INSERTION WILL BE MADE HERE/r '"$SRC_DIR/$OBJ/importStatements.js" \
 				  | sed '/\/\/ AUTOMATIC METHOD INSERTION WILL BE MADE HERE/r '"$SRC_DIR/$OBJ/importMethod.js" \
@@ -106,5 +112,7 @@ for TYPE in import export viewer; do
 		fi
 
 	done < "$FILE_IN_SCRATCH"
+
 done
+
 echo
