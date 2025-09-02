@@ -11,6 +11,10 @@ mkdir -p "$DIST_DIR"
 SCRATCH_DIR="scratch"
 BODYStatement="extraMethodsStatements"
 echo ""
+echo "**************************************************** "
+echo "**************************************************** "
+echo "**************************************************** "
+echo "**************************************************** "
 echo "****** Start scripts/transform.zsh "
 
 

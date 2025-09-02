@@ -1,2 +1,3 @@
+nmrSpectrumObject export
 nmrSpectrumObject import
 jGraphObject import
