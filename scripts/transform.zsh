@@ -36,8 +36,10 @@ for TYPE in import export viewer; do
 		if [ ! -s "$OBJ_File/$BODYStatement.json" ]; then
 		    continue
 		fi
+
 		jq -r '.listObject[] | "\(.object) \(.type)"' "$OBJ_File/$BODYStatement.json" > "$OBJ_File/$BODYStatement.txt"
 		
+		echo "  OK to have error here if <viewer>"
 		jq -r '.jsLibrary[]' "$OBJ_File/$BODYStatement.json" | while IFS= read -r lib; do
 			echo "         Processing library: $lib"
 			if [[ ! -f "$DIST_DIR/$lib" ]]; then
@@ -55,6 +57,8 @@ for TYPE in import export viewer; do
 			echo "// for $result" >> "$DIST_DIR/$lib"
 
 		done
+		echo "  jq end"
+
 		if [ -s "$OBJ_File/$BODYStatement.txt" ]; then
 			while IFS=' ' read -r OBJECT_STATEMENTS TYPE_STATEMENT 
 			do

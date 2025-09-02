@@ -7,7 +7,7 @@
 	"fileNameViewerUSELESSMAXBE_REDUNDANT": [
 		"src/nmrSpectrum.js"
 		],
-	"jsLibrary": [
+	"jsLibraryView": [
 		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/nmrSpectrum.js", "include": "NmrSpectrum"},
 		{"repository":"CHEMeDATA/schema", "fileName": "html/src_objects/nmrSpectrumObject.js"}
 	],
@@ -30,7 +30,7 @@
 		"src/jmolInterface.js",
 		"src/getJisOK.js"
 	],
-	"jsLibrary": [
+	"jsLibraryView": [
 		{"repository":"CHEMeDATA/viewers-base", "fileName": "src/viewerBase.js"},
 		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/nmrAssignement.js"},
 		{"repository":"CHEMeDATA/schema", "fileName": "html/src_objects/nmrSpectrum.js"},
@@ -54,7 +54,7 @@
 		"src/nmrSpectrum.js", 
 		"src/nmrAssignement.js"
 		],
-	"jsLibrary": [
+	"jsLibraryView": [
 		{"repository":"CHEMeDATA/viewers-base", "fileName": "src/viewerBase.js"},
 		{"repository":"CHEMeDATA/nmr-objects", "fileName": "dist/jGraphObject.js", "include": "JgraphObject"},
 		{"repository":"CHEMeDATA/NMRspectrum-viewer", "fileName": "src/jGraphViewer.js", "include" : "JgraphViewer"},
