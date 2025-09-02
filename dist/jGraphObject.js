@@ -1,4 +1,5 @@
 // AUTOMATIC IMPORT INSERTION WILL BE MADE HERE
+// import statements in Mnova importStatement.js
 import { processMnovaJsonSpectrum } from "./mnovaJsonReader.js";
 import { processMnovaJsonMolecule } from "./mnovaJsonReader.js";
 
@@ -9,6 +10,7 @@ import { ingestMoleculeObject } from "./mnovaJsonReader.js";
 import { ingestSpectrumRegions } from "./mnovaJsonReader.js";
 
 import { processSf } from "./mnovaJsonReader.js";
+
 import { ObjectBase } from "./objectBase.js";
 
 export class JgraphObject extends ObjectBase {
@@ -26,7 +28,7 @@ export class JgraphObject extends ObjectBase {
 	}
 
 // AUTOMATIC METHOD INSERTION WILL BE MADE HERE
-	// Example import method // Should not minimize
+//  import method // Should not minimize
 	import_Editordjeanner_Version1_SourceMnovaJson_IDnone(param, dataInput) {
 		if (!dataInput.origin) {
 			console.error("No origin data in dataInput", dataInput);
@@ -337,5 +339,5 @@ export class JgraphObject extends ObjectBase {
 			};
 		}
 	}
-	
+
 }
