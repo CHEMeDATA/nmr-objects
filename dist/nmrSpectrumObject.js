@@ -12,7 +12,7 @@ import { ingestSpectrumRegions } from "./mnovaJsonReader.js";
 
 import { processSf } from "./mnovaJsonReader.js";
 
-import { ObjectBase } from "./ObjectBase.js";
+import { ObjectBase } from "./objectBase.js";
 
 export class NMRspectrumObject extends ObjectBase {
 	constructor(param, input) {

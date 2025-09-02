@@ -1,6 +1,6 @@
 // AUTOMATIC IMPORT INSERTION WILL BE MADE HERE
 
-import { ObjectBase } from "./ObjectBase.js";
+import { ObjectBase } from "./objectBase.js";
 
 export class NMRspectrumObject extends ObjectBase {
 	constructor(param, input) {
