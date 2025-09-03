@@ -206,6 +206,13 @@
          "object": "jGraphObject",
          "objectObj": "JgraphObject",
          "type": "import",
+         "jsLibraryGet": [
+           {
+             "repository": "CHEMeDATA/nmr-objects",
+             "fileName": "src/nmrSpectrumObject.js",
+             "include": "NMRspectrumObject"
+           }
+         ],
          "requiredInput": [
            {
              "dataPropertyName": "jsonSpectrum",
