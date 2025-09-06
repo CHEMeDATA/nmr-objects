@@ -1,5 +1,5 @@
 //  export method // Should not minimize
-	export_Editordjeanner_Version1_SourceMnovaJson_IDnone(param, obj) {
+	export_Editordjeanner_Version1_SourceMnovaJson_IDnone(param) {
 	/* param:
 	dataObj        : dataObj,
 	objDataField   : dataObj.item.objDataField,
@@ -8,6 +8,7 @@
 	object         : dataObj.objSource
 	objoutputFields
 	*/
+	const obj = this.data;
 	const objDataField = param.objDataField;
 	if (! param.objectObj) {
 		console.error("No objectObj in param from export_Editordjeanner_Version1_SourceMnovaJson_IDnone")
@@ -44,7 +45,7 @@
         "ph1": 0.0, //2.9646546646811123
       }
     ];
-    const arrayOfPoints = []
+    const arrayOfPoints = obj.values;
     // Step 2: build the whole dataset using dimensionalParameters
     const mnovaDataset = {
       "$mnova_schema": "https://mestrelab.com/json-schemas/mnova/2023-07/01/nmr/dataset",
