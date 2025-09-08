@@ -165,7 +165,7 @@
              "include": "NMRspectrumObject"
            },
            {
-             "repository": "CHEMeDATA/nmr-objects",
+             "repository": "CHEMeDATA/MnovaJson-reader",
              "fileName": "src/mnovaJasonBuilder.js",
              "include": "buildFromNMRspectrumObject"
            }
