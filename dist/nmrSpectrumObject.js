@@ -1,5 +1,5 @@
 // AUTOMATIC IMPORT INSERTION WILL BE MADE HERE
-import { buildFromNMRspectrumObject } "./mnovaJasonBuilder.js";
+import { buildFromNMRspectrumObject } from "./mnovaJasonBuilder.js";
 // import statements in Mnova importStatement.js
 import { processMnovaJsonSpectrum } from "./mnovaJsonReader.js";
 import { processMnovaJsonMolecule } from "./mnovaJsonReader.js";
