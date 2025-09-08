@@ -1,3 +1,4 @@
+setSpectra export
 nmrSpectrumObject export
 nmrSpectrumObject import
 jGraphObject import
