@@ -8,8 +8,19 @@ The script [scripts/transform.zsh](scripts/transform.zsh) adds the methods and s
 
 run:
 
+```zsh
+
+echo "create list all_tools.json"
+node scripts/createListObjects.js
+node scripts/transform.js
+
+```
+
 
 ```zsh
+
+echo "create list all_tools.json"
 scripts/createListObjects.zsh
 scripts/transform.zsh
+
 ```

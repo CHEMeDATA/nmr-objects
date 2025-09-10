@@ -11,6 +11,7 @@ import { ingestSpectrumRegions } from "./mnovaJsonReader.js";
 
 import { processSf } from "./mnovaJsonReader.js";
 
+
 import { ObjectBase } from "./objectBase.js";
 
 export class JgraphObject extends ObjectBase {
@@ -341,5 +342,6 @@ export class JgraphObject extends ObjectBase {
 			};
 		}
 	}
+
 
 }

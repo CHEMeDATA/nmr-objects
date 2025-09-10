@@ -1,6 +1,7 @@
 // AUTOMATIC IMPORT INSERTION WILL BE MADE HERE
 // import statement in Mnova exportStatement.js
 import { buildFromNMRspectrumObject } from "./mnovaJasonBuilder.js";
+
 // import statements in Mnova importStatement.js
 import { processMnovaJsonSpectrum } from "./mnovaJsonReader.js";
 import { processMnovaJsonMolecule } from "./mnovaJsonReader.js";
@@ -12,6 +13,7 @@ import { ingestMoleculeObject } from "./mnovaJsonReader.js";
 import { ingestSpectrumRegions } from "./mnovaJsonReader.js";
 
 import { processSf } from "./mnovaJsonReader.js";
+
 
 import { ObjectBase } from "./objectBase.js";
 
@@ -172,6 +174,7 @@ export class NMRspectrumObject extends ObjectBase {
 	);
 	return {};
 }
+
 //  import method // Should not minimize
 	import_Editordjeanner_Version1_SourceMnovaJson_IDnone(param, dataInput) {
 		if (!dataInput.origin) {
@@ -485,4 +488,5 @@ export class NMRspectrumObject extends ObjectBase {
 			};
 		}
 	}
+
 }

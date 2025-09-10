@@ -1,105 +1,149 @@
 {
-	"listObject": [
-		{
-			"object": "setSpectra",
-			"objectObj": "NMRspectrumObject",
-			"type": "export",
-			"title": "Mnova json spectra",
-			"jsLibraryGet": [
-				{"repository":"CHEMeDATA/nmr-objects", "fileName": "src/nmrSpectrumObject.js", "include": "NMRspectrumObject"},
-				{"repository":"CHEMeDATA/MnovaJson-reader", "fileName": "src/mnovaJasonBuilder.js", "include": "buildFromNMRspectrumObject"}
-			],
-			"outputComponents": [
-				{
-					"objDataField" : {"passedList":["field1"]},
-					"label": "NMR file (.json)",
-					"type": "json",
-					"defaultFileName": "output.spectrum",
-					"type possible values" :"json binary txt"
-				},
-				{
-					"objDataField" : {"passedList":["field2"]},
-					"label": "source not implemented (.txt)",
-					"type": "txt",
-					"defaultFileName": "output.source",
-					"type possible values" :"json binary txt"
-				}
-			]
-		},{
-			"object": "nmrSpectrumObject",
-			"objectObj": "NMRspectrumObject",
-			"type": "export",
-			"title": "Mnova json spectrum",
-			"jsLibraryGet": [
-				{"repository":"CHEMeDATA/nmr-objects", "fileName": "src/nmrSpectrumObject.js", "include": "NMRspectrumObject"},
-				{"repository":"CHEMeDATA/MnovaJson-reader", "fileName": "src/mnovaJasonBuilder.js", "include": "buildFromNMRspectrumObject"}
-			],
-			"outputComponents": [
-				{
-					"objDataField" : {"passedList":["field1"]},
-					"label": "NMR file (.json)",
-					"type": "json",
-					"defaultFileName": "output.spectrum",
-					"type possible values" :"json binary txt"
-				},
-				{
-					"objDataField" : {"passedList":["field2"]},
-					"label": "source not implemented (.txt)",
-					"type": "txt",
-					"defaultFileName": "output.source",
-					"type possible values" :"json binary txt"
-				}
-			]
-		},{
-			"object": "nmrSpectrumObject",
-			"objectObj": "NMRspectrumObject",
-			"type": "import",
-			"jsLibraryGet": [
-				{"repository":"CHEMeDATA/nmr-objects", "fileName": "src/nmrSpectrumObject.js", "include": "NMRspectrumObject"}
-			],
-			"requiredInput": [
-				{
-					"dataPropertyName": "jsonSpectrum",
-					"label": "NMR file (.json)",
-					"type": "file",
-					"validationFileString1000": "https://mestrelab.com/json-schemas/mnova/2023-07/01/nmr/spec"
-				}
-			]
-		},
-		{
-			"object": "jGraphObject",
-			"objectObj": "JgraphObject",
-			"type": "import",
-			"jsLibraryGet": [
-				{"repository":"CHEMeDATA/nmr-objects", "fileName": "src/nmrSpectrumObject.js", "include": "NMRspectrumObject"}
-			],
-			"requiredInput": [
-				{
-					"dataPropertyName": "jsonSpectrum",
-					"label": "NMR file (.json)",
-					"type": "file",
-					"validationFileString1000": "https://mestrelab.com/json-schemas/mnova/2023-07/01/nmr/spec"
-				},
-				{
-					"dataPropertyName": "jsonMolecule",
-					"label": "molecule file (.json)",
-					"type": "file",
-					"validationFileString1000": "https://mestrelab.com/json-schemas/mnova/2023-07/01/molecule/molecule"
-				},
-				{
-					"dataPropertyName": "jsonDataInitial",
-					"label": "network file (.json)",
-					"type": "file"
-				}
-			]
-		}
-	],
-	"jsLibrary": ["mnovaJsonReader.js"],
-	"repository": "MnovaJson-reader",
-	"creatorParam": {
-		"editor": "djeanner",
-		"version": "1",
-		"source": "MnovaJson",
-		"id": "none"
-	}
+  "listObject": [
+    {
+      "object": "setSpectra",
+      "objectObj": "NMRspectrumObject",
+      "type": "export",
+      "title": "Mnova json spectra",
+      "jsLibraryGet": [
+        {
+          "repository": "CHEMeDATA/nmr-objects",
+          "fileName": "src/nmrSpectrumObject.js",
+          "include": "NMRspectrumObject"
+        },
+        {
+          "repository": "CHEMeDATA/MnovaJson-reader",
+          "fileName": "src/mnovaJasonBuilder.js",
+          "include": "buildFromNMRspectrumObject"
+        }
+      ],
+      "outputComponents": [
+        {
+          "objDataField": {
+            "passedList": [
+              "field1"
+            ]
+          },
+          "label": "NMR file (.json)",
+          "type": "json",
+          "defaultFileName": "output.spectrum",
+          "type possible values": "json binary txt"
+        },
+        {
+          "objDataField": {
+            "passedList": [
+              "field2"
+            ]
+          },
+          "label": "source not implemented (.txt)",
+          "type": "txt",
+          "defaultFileName": "output.source",
+          "type possible values": "json binary txt"
+        }
+      ]
+    },
+    {
+      "object": "nmrSpectrumObject",
+      "objectObj": "NMRspectrumObject",
+      "type": "export",
+      "title": "Mnova json spectrum",
+      "jsLibraryGet": [
+        {
+          "repository": "CHEMeDATA/nmr-objects",
+          "fileName": "src/nmrSpectrumObject.js",
+          "include": "NMRspectrumObject"
+        },
+        {
+          "repository": "CHEMeDATA/MnovaJson-reader",
+          "fileName": "src/mnovaJasonBuilder.js",
+          "include": "buildFromNMRspectrumObject"
+        }
+      ],
+      "outputComponents": [
+        {
+          "objDataField": {
+            "passedList": [
+              "field1"
+            ]
+          },
+          "label": "NMR file (.json)",
+          "type": "json",
+          "defaultFileName": "output.spectrum",
+          "type possible values": "json binary txt"
+        },
+        {
+          "objDataField": {
+            "passedList": [
+              "field2"
+            ]
+          },
+          "label": "source not implemented (.txt)",
+          "type": "txt",
+          "defaultFileName": "output.source",
+          "type possible values": "json binary txt"
+        }
+      ]
+    },
+    {
+      "object": "nmrSpectrumObject",
+      "objectObj": "NMRspectrumObject",
+      "type": "import",
+      "jsLibraryGet": [
+        {
+          "repository": "CHEMeDATA/nmr-objects",
+          "fileName": "src/nmrSpectrumObject.js",
+          "include": "NMRspectrumObject"
+        }
+      ],
+      "requiredInput": [
+        {
+          "dataPropertyName": "jsonSpectrum",
+          "label": "NMR file (.json)",
+          "type": "file",
+          "validationFileString1000": "https://mestrelab.com/json-schemas/mnova/2023-07/01/nmr/spec"
+        }
+      ]
+    },
+    {
+      "object": "jGraphObject",
+      "objectObj": "JgraphObject",
+      "type": "import",
+      "jsLibraryGet": [
+        {
+          "repository": "CHEMeDATA/nmr-objects",
+          "fileName": "src/nmrSpectrumObject.js",
+          "include": "NMRspectrumObject"
+        }
+      ],
+      "requiredInput": [
+        {
+          "dataPropertyName": "jsonSpectrum",
+          "label": "NMR file (.json)",
+          "type": "file",
+          "validationFileString1000": "https://mestrelab.com/json-schemas/mnova/2023-07/01/nmr/spec"
+        },
+        {
+          "dataPropertyName": "jsonMolecule",
+          "label": "molecule file (.json)",
+          "type": "file",
+          "validationFileString1000": "https://mestrelab.com/json-schemas/mnova/2023-07/01/molecule/molecule"
+        },
+        {
+          "dataPropertyName": "jsonDataInitial",
+          "label": "network file (.json)",
+          "type": "file"
+        }
+      ]
+    }
+  ],
+  "jsLibrary": [
+    "mnovaJsonReader.js"
+  ],
+  "repository": "MnovaJson-reader",
+  "creatorParam": {
+    "editor": "djeanner",
+    "version": "1",
+    "source": "MnovaJson",
+    "id": "none"
+  }
 }

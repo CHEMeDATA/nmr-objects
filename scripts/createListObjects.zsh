@@ -81,11 +81,11 @@ for REPO in $REPOS; do
 done
 echo " ]" >> "$ALL_JSONfile"
 echo "}" >> "$ALL_JSONfile"
- 
 
+echo
 for TYPE in import export viewer; do
     FILE="$SRC_DIR/$TYPE.txt"
-	echo "                      Remove duplicates from $FILE"
+	echo "Remove duplicates from $FILE"
     [[ -f "$FILE" ]] || continue
     awk '!seen[$0]++' "$FILE" > "$FILE.tmp" && mv "$FILE.tmp" "$FILE"
 done

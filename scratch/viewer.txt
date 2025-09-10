@@ -1,1 +1,2 @@
 NMRspectrum-viewer
+solidStateNMRCSA-reader
