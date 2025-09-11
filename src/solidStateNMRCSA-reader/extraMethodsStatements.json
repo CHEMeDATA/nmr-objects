@@ -1,0 +1,47 @@
+{
+  "listObject": [
+    {
+      "object": "SsSpectrum",
+      "type": "viewer",
+      "repository": "CHEMeDATA/solidStateNMRCSA-reader",
+      "fileNameViewerUSELESSMAXBE_REDUNDANT": [
+        "src/ssSpectrum.js"
+      ],
+      "jsLibraryView": [
+        {
+          "repository": "CHEMeDATA/viewers-base",
+          "fileName": "src/viewerBase.js"
+        },
+        {
+          "repository": "CHEMeDATA/objects-base",
+          "fileName": "src/objectBase.js"
+        },
+        {
+          "repository": "CHEMeDATA/solidStateNMRCSA-reader",
+          "fileName": "src/controlSliders.js",
+          "include": "ControlSliders"
+        },
+        {
+          "repository": "CHEMeDATA/solidStateNMRCSA-reader",
+          "fileName": "src/ssSpectrum.js",
+          "include": "SsSpectrum"
+        },
+        {
+          "repository": "CHEMeDATA/solidStateNMRCSA-reader",
+          "fileName": "src/rank2ssbs.js"
+        },
+        {
+          "repository": "CHEMeDATA/solidStateNMRCSA-reader",
+          "fileName": "src/rank2stat.js"
+        },
+        {
+          "repository": "CHEMeDATA/solidStateNMRCSA-reader",
+          "fileName": "src/nMRspinSystemModel_CSA.js"
+        }
+      ],
+      "listObjectSchema": [
+        "NMRspinSystemModel_CSA"
+      ]
+    }
+  ]
+}

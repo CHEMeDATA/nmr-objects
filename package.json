@@ -1,0 +1,14 @@
+{
+  "name": "nmr-objects",
+  "version": "1.0.0",
+  "description": "NMR Objects handler and utilities",
+  "type": "module",
+  "scripts": {
+    "start": "echo \"No start file defined\""
+  },
+  "author": "Damien Jeannerat",
+  "license": "MIT",
+  "dependencies": {
+    "uuid": "^12.0.0"
+  }
+}
