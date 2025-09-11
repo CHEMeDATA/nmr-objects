@@ -35,7 +35,7 @@
           "fileName": "src/rank2stat.js"
         },
         {
-          "repository": "CHEMeDATA/solidStateNMRCSA-reader",
+          "repository": "CHEMeDATA/nmr-objects",
           "fileName": "src/nMRspinSystemModel_CSA.js"
         }
       ],
