@@ -12,6 +12,7 @@ const SRC_DIR = "scratch";
 const BODY_STATEMENT = "extraMethodsStatements";
 const ALL_JSON_FILE = "all_tools.json";
 
+
 export async function createListObjects() {
 	// clean scratch dir
 	await fs.rm(SRC_DIR, { recursive: true, force: true });
