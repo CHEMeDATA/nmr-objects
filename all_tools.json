@@ -384,11 +384,6 @@
               "include": "csa2xyNMR"
             },
             {
-              "repository": "CHEMeDATA/solidStateNMRCSA-reader",
-              "fileName": "src/bridgeCSA_to_spectrum.js",
-              "include": "bridgeCSA_to_spectrum"
-            },
-            {
               "repository": "CHEMeDATA/nmr-objects",
               "fileName": "src/nMRspinSystemModel_CSA.js"
             }
