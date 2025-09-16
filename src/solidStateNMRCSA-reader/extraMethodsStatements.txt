@@ -1,1 +1,2 @@
 SsSpectrum viewer
+NMRspinSystemModel_CSA bridge

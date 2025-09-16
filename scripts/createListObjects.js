@@ -77,7 +77,7 @@ export async function createListObjects() {
 					const [objectStatement, typeStatement] = entry.split(" ");
 					if (
 						!objectStatement ||
-						!["import", "export", "viewer"].includes(typeStatement)
+						!["import", "export", "viewer", "bridge"].includes(typeStatement)
 					) {
 						continue;
 					}
@@ -94,6 +94,9 @@ export async function createListObjects() {
 					}
 					if (typeStatement === "viewer") {
 						await appendUnique(path.join(SRC_DIR, "viewer.txt"),repo);
+					}
+					if (typeStatement === "bridge") {
+						await appendUnique(path.join(SRC_DIR, "bridge.txt"),repo);
 					}
 				}
 			} else {

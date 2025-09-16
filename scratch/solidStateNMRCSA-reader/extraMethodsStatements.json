@@ -28,6 +28,11 @@
         },
         {
           "repository": "CHEMeDATA/solidStateNMRCSA-reader",
+          "fileName": "src/csa2xyNMR.js",
+          "include": "csa2xyNMR"
+        },
+        {
+          "repository": "CHEMeDATA/solidStateNMRCSA-reader",
           "fileName": "src/rank2ssbs.js"
         },
         {
@@ -42,6 +47,67 @@
       "listObjectSchema": [
         "NMRspinSystemModel_CSA"
       ]
+    },
+    {
+      "objectSchemaSource": "NMRspinSystemModel_CSA",
+      "object": "NMRspinSystemModel_CSA",
+      "objectSchemaTarget": "nmrSpectrumObject",
+      "objectTarget": "NMRspectrumObject",
+      "type": "bridge",
+      "title": "Simulation powder-pattern spectrum from diagonal CSA",
+      "sourceVersion": 1,
+      "targetVersion": 1,
+      "jsLibraryGet": [
+        {
+          "repository": "CHEMeDATA/solidStateNMRCSA-reader",
+          "fileName": "src/rank2ssbs.js"
+        },
+        {
+          "repository": "CHEMeDATA/solidStateNMRCSA-reader",
+          "fileName": "src/rank2stat.js"
+        },
+        {
+          "repository": "CHEMeDATA/solidStateNMRCSA-reader",
+          "fileName": "src/csa2xyNMR.js",
+          "include": "csa2xyNMR"
+        },
+        {
+          "repository": "CHEMeDATA/solidStateNMRCSA-reader",
+          "fileName": "src/bridgeCSA_to_spectrum.js",
+          "include": "bridgeCSA_to_spectrum"
+        },
+        {
+          "repository": "CHEMeDATA/nmr-objects",
+          "fileName": "src/nMRspinSystemModel_CSA.js"
+        }
+      ],
+      "formFields": [
+        {
+          "dataPropertyName": "jsonSpectrum",
+          "label": "NMR file (.json) - testing needing input file to complement one object towards another",
+          "defaultValue": "dummy.json",
+          "type": "file"
+        },
+        {
+          "dataPropertyName": "origin",
+          "label": "origin",
+          "defaultValue": "[Insert here the source of the data]",
+          "type": "string"
+        },
+        {
+          "dataPropertyName": "frequency",
+          "label": "Larmor frequency",
+          "defaultValue": 500,
+          "type": "double"
+        }
+      ]
     }
-  ]
+  ],
+  "repository": "solidStateNMRCSA-reader",
+  "creatorParam": {
+    "editor": "djeanner",
+    "version": "1",
+    "source": "solidStateNMRCSA",
+    "id": "none"
+  }
 }

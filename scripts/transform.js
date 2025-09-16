@@ -23,7 +23,7 @@ export async function transform() {
 	await fs.rm(DIST_DIR, { recursive: true, force: true });
 	await fs.mkdir(DIST_DIR, { recursive: true });
 
-	for (const TYPE of ["import", "export", "viewer"]) {
+	for (const TYPE of ["import", "export", "viewer", "bridge"]) {
 		const fileInScratch = path.join(SCRATCH_DIR, `${TYPE}.txt`);
 		console.log(`** Processing <${TYPE}> objects from ${fileInScratch} **`);
 
@@ -95,10 +95,11 @@ export async function transform() {
 			for (const entry of entries) {
 				const [objectStatement, typeStatement] = entry.split(" ");
 				if (!objectStatement) continue;
+				// no insertion for "viewers"
 				if (typeStatement !== TYPE || typeStatement === "viewer") continue;
-				if (!["import", "export", "viewer"].includes(typeStatement)) continue;
+				if (!["import", "export", "viewer", "bridge"].includes(typeStatement)) continue;
 
-				console.log(`                          Object : ${objectStatement}`);
+				console.log(`                          Object : ${objectStatement} (entry: ${entry})`);
 
 				// Download helper scripts
 				const statementsFile = `${typeStatement}Statements.js`;
@@ -120,9 +121,12 @@ export async function transform() {
 						await fs.copyFile(baseFileSrc, baseFileDist);
 						console.log(`✅Copied ${objectStatement}.js into dist`);
 					} catch {
-						console.log(
-							`❌ERROR: File ${baseFileSrc} missing — target class does not exist`
+						console.error(
+							`!! Warning: File ${baseFileSrc} missing — target class does not exist - This may be OK!`
 						);
+						console.log(`             NO Insertions of ${statementsFile} `);
+						console.log(`             NO and           ${methodFile} `);
+						console.log(`             NO into          ${objectStatement}.js`);
 						continue;
 					}
 				}
