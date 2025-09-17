@@ -86,14 +86,16 @@
         {
           "dataPropertyName": "origin",
           "label": "origin",
-          "defaultValue": "[Insert here the source of the data]",
-          "type": "string"
+          "defaultValue": "Insert here the source of the data",
+          "baseType": "string"
         },
         {
           "dataPropertyName": "frequency",
           "label": "Larmor frequency",
           "defaultValue": 500,
-          "type": "double"
+          "randomFrom": 100,
+          "randomTo": 500,
+          "baseType": "double"
         }
       ]
     }
