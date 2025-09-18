@@ -171,7 +171,7 @@
           "jsLibraryGet": [
             {
               "repository": "CHEMeDATA/nmr-objects",
-              "fileName": "src/nmrSpectrumObject.js",
+              "fileName": "dist/nmrSpectrumObject.js",
               "include": "NMRspectrumObject"
             },
             {
@@ -213,7 +213,7 @@
           "jsLibraryGet": [
             {
               "repository": "CHEMeDATA/nmr-objects",
-              "fileName": "src/nmrSpectrumObject.js",
+              "fileName": "dist/nmrSpectrumObject.js",
               "include": "NMRspectrumObject"
             },
             {
@@ -254,7 +254,7 @@
           "jsLibraryGet": [
             {
               "repository": "CHEMeDATA/nmr-objects",
-              "fileName": "src/nmrSpectrumObject.js",
+              "fileName": "dist/nmrSpectrumObject.js",
               "include": "NMRspectrumObject"
             }
           ],
