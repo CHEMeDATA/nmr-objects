@@ -1,7 +1,7 @@
- bridge_Editordjeanner_Version1_SourceNMRspinSystemModel_CSA_IDnone(
+ bridge_Editordjeanner_Version1_SourcesolidStateNMRCSA_IDnone(
 	param
 ) {
-	const name = "bridge_Editordjeanner_Version1_SourceNMRspinSystemModel_CSA_IDnone";
+	const name = "bridge_Editordjeanner_Version1_SourcesolidStateNMRCSA_IDnone";
 
 	const obj = this.data;
 	const objDataField = param.objDataField;

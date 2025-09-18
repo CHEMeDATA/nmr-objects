@@ -73,7 +73,8 @@
         },
         {
           "repository": "CHEMeDATA/nmr-objects",
-          "fileName": "dist/NMRspinSystemModel_CSA.js"
+          "fileName": "dist/NMRspinSystemModel_CSA.js",
+          "include": "NMRspinSystemModel_CSA"
         }
       ],
       "formFields": [
